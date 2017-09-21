@@ -1,0 +1,14 @@
+﻿maybe outline it like this:
+
+welcome to the bank
+generic language
+
+ask first about checking or saving (or exit the bank)
+THEN create instance for relevant derived class
+
+print total on deposit
+print total in specific account (c or s)
+
+ask if they want to deposit, withdraw, return to main menu
+
+repeat until main menu choice is to leave the bank
