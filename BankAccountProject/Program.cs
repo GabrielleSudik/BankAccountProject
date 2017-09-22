@@ -46,14 +46,14 @@ namespace BankAccountProject
                     Client mikeClient = new Client();
 
                     mikeClient.ClientInfo();
-                    Console.WriteLine();
+                    //Console.WriteLine();
                 }
 
                 if (choice == 2)
                 {
                     Console.WriteLine("Which account would you like to check?");
-                    Console.WriteLine("\t1.\tchecking or");
-                    Console.WriteLine("\t2.\tsavings?");
+                    Console.WriteLine("\t1.\tchecking");
+                    Console.WriteLine("\t2.\tsavings");
                     int choiceB = int.Parse(Console.ReadLine());
                     
                     if (choiceB == 1)
@@ -76,8 +76,8 @@ namespace BankAccountProject
                 if (choice == 3)
                 {
                     Console.WriteLine("From which account would you like to withdraw funds?");
-                    Console.WriteLine("\t1.\tchecking or");
-                    Console.WriteLine("\t2.\tsavings?");
+                    Console.WriteLine("\t1.\tchecking");
+                    Console.WriteLine("\t2.\tsavings");
                     int choiceB = int.Parse(Console.ReadLine());
 
                     if (choiceB == 1)
@@ -92,7 +92,7 @@ namespace BankAccountProject
                     {
                         SavingsAccount mikeSv = new SavingsAccount();
 
-                        //mikeSv.AccountWithdrawal();  NEED TO CREATE!!
+                        mikeSv.AccountWithdrawal();  
                         //consider creating in general, with the savings one as an override
                     }
 
@@ -101,8 +101,8 @@ namespace BankAccountProject
                 if (choice == 4)
                 {
                     Console.WriteLine("To which account would you like to deposit funds?");
-                    Console.WriteLine("\t1.\tchecking or");
-                    Console.WriteLine("\t2.\tsavings?");
+                    Console.WriteLine("\t1.\tchecking");
+                    Console.WriteLine("\t2.\tsavings");
                     int choiceB = int.Parse(Console.ReadLine());
 
                     if (choiceB == 1)
@@ -116,7 +116,7 @@ namespace BankAccountProject
                     {
                         SavingsAccount mikeSv = new SavingsAccount();
 
-                        //mikeSv.AccountDeposit();  NEED TO CREATE!!
+                        mikeSv.AccountDeposit();  
                     }
 
                 }
@@ -134,7 +134,6 @@ namespace BankAccountProject
 
             Environment.Exit(0);
 
-            Console.WriteLine();
 
             //Console.WriteLine("Do you want to savings or checking?");
             //string choice = Console.ReadLine();
@@ -147,7 +146,7 @@ namespace BankAccountProject
             //mikeC.AccountInf0();
             
 
-            Console.ReadLine();
+            //Console.ReadLine();
 
             //while loop
             //isBanking = true

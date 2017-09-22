@@ -10,29 +10,12 @@ namespace BankAccountProject
     {
         //fields
 
-        //protected string name; //assign name here since just one client?
-        //protected int accountNumber; //ditto
-        //protected string city;
-        protected double accountBalance = 100000d; //can this be the total of S and C?
+        protected double accountBalance = 100000.00d; //can this be the total of S and C?
+        protected string accountType = "";
 
-
-
+        
         //properties
 
-        //public string Name
-        //{
-        //    get { return this.name; }
-        //}
-
-        //public int AccountNumber
-        //{
-        //    get { return this.accountNumber; }
-        //}
-
-        //public string City
-        //{
-        //    get { return this.city; }
-        //}
 
         public double AccountBalance
         {
@@ -40,32 +23,29 @@ namespace BankAccountProject
             set { this.accountBalance = value; }
         }
 
-
-        //constructors
-
-        public GeneralAccount() //default constructor. not sure if leave empty or set info?
+        public string AccountType
         {
-            
+            get { return this.accountType; }
+            set { this.accountType = value; }
         }
 
 
+        //constructors
+
+        public GeneralAccount() //default constructor. not sure if leave empty or set info, like acct type?
+        {
+            //this.accountType = accountType;
+        }
 
 
         //methods
 
-        //public void PrintInfo()
-        //{
-        //    Console.WriteLine("Here's your bank info: //coming soon");
-        //    Console.WriteLine(this.name);
-        //    Console.WriteLine(accountNumber);
-        //    Console.WriteLine(city);
-
-        //}
 
         public virtual void AccountInfo()
         {
             //make this do something that will be overriden by savings and checking
-            Console.WriteLine($"The value of ALL of your deposits is: {accountBalance}."); //look up how to print $$
+            Console.WriteLine($"The value of ALL of your deposits is: {accountBalance:C}.");
+            Console.WriteLine();
         }
 
         //abstract public double AccountDeposit(); //should this be abstract? can it be? I NEED one
@@ -73,16 +53,18 @@ namespace BankAccountProject
         //i temporarily fixed this problem by coding it out here, and removing "override" in derived method
         //but i don't like that :(
 
-        public virtual double AccountDeposit()
+        public virtual double AccountDeposit() //maybe need parameter here for account type? or somewhere. 
+            //constructors in Ch or Sv maybe?
+            //maybe make this the abstract class, since Ch and Sv each use their own balance?
         {
-            Console.WriteLine($"Starting balance in checking is: {accountBalance}.");
+            Console.WriteLine($"Starting balance in checking is: {accountBalance:C}.");
             Console.WriteLine("How much would you like to deposit?");
             double deposit = Double.Parse(Console.ReadLine());
             accountBalance += deposit;
-            Console.WriteLine($"Your new balance in checking is: {accountBalance}.");
+            Console.WriteLine($"Your new balance in checking is: {accountBalance:C}.");
             Console.WriteLine();
 
-            return accountBalance;
+            return AccountBalance;
 
         }
 
@@ -95,7 +77,8 @@ namespace BankAccountProject
             Console.WriteLine($"Your new balance in checking is: {accountBalance}.");
             Console.WriteLine();
 
-            return accountBalance;
+            return accountBalance; //remove and switch double to void
+
         }
     }
 }

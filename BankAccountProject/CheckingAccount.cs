@@ -11,14 +11,20 @@ namespace BankAccountProject
         //fields
 
         private double checkingBalance;
+        private new string accountType = "checking";
 
 
-            //properties
+        //properties
 
-            public double CheckingBalance
+        public double CheckingBalance
         {
             get { return this.checkingBalance; }
             set { this.checkingBalance = value; }
+        }
+
+        public String AccountType
+        {
+            get { return this.accountType; }
         }
 
         //constructor
@@ -29,8 +35,8 @@ namespace BankAccountProject
             //this.name = name;
             //this.accountNumber = accountNumber;
             //this.city = city;
-            this.accountBalance = accountBalance;
-            accountBalance = accountBalance * .25; //at least this part works lol
+            //this.accountBalance = accountBalance;
+            checkingBalance = accountBalance * .25; //at least this part works lol
 
             //can you re-do that so it's just called accountBalance, but is .25 of total?
             //then same for checking but .75 of total?
@@ -51,42 +57,49 @@ namespace BankAccountProject
 
         public override void AccountInfo()
         {
-
-            Console.WriteLine($"The value of your checking account only is {checkingBalance}.");
+            Console.WriteLine($"The value of ALL of your deposits is: {accountBalance:C}.");
+            Console.WriteLine($"The value of your {accountType} account only is {checkingBalance:C}.");
+            Console.WriteLine();
         }
 
         public double AccountDeposit()
         {
-            Console.WriteLine($"Starting balance in checking is: {checkingBalance}.");
+            Console.WriteLine($"Starting balance in checking is: {checkingBalance:C}.");
             Console.WriteLine("How much would you like to deposit?");
             double deposit = Double.Parse(Console.ReadLine());
             checkingBalance += deposit;
-            Console.WriteLine($"Your new balance in checking is: {checkingBalance}.");
+            Console.WriteLine($"Thank you for your deposit of {deposit:C}.");
+            Console.WriteLine($"Your new balance in checking is: {checkingBalance:C}.");
+            Console.WriteLine();
 
             return checkingBalance;
 
         }
-        //public override double AccountWithdrawal()
-        //{
-        //    Console.WriteLine($"Starting balance in checking is: {accountBalance}.");
-        //    Console.WriteLine("How much would you like to withdraw?");
-        //    double deposit = Double.Parse(Console.ReadLine());
-        //    accountBalance -= deposit;
 
-        //    if (accountBalance >= 0)
-        //    {
-        //        Console.WriteLine($"Your new balance in checking is: {accountBalance}.");
-        //        Console.WriteLine();
-        //    }
 
-        //    else
-        //    {
-        //        Console.WriteLine("You cannot withdraw more than what's in your account.");
-        //        accountBalance += deposit;
-        //        Console.WriteLine($"Your checking account balance is still {accountBalance}.");
-        //    }
+        public override double AccountWithdrawal()
+        {
+            Console.WriteLine($"Starting balance in checking is: {checkingBalance:C}.");
+            Console.WriteLine("How much would you like to withdraw?");
+            double withdrawal = Double.Parse(Console.ReadLine());
+            checkingBalance -= withdrawal;
 
-        //    return accountBalance;
-        //}
+            if (checkingBalance >= 0)
+            {
+                Console.WriteLine($"Here is your {withdrawal:C}.");
+                Console.WriteLine($"Your new balance in checking is: {checkingBalance:C}.");
+                Console.WriteLine();
+            }
+
+            else
+            {
+                Console.WriteLine("You cannot withdraw more than what's in your account.");
+                checkingBalance += withdrawal;
+                Console.WriteLine($"Your checking account balance is still {checkingBalance:C}.");
+                Console.WriteLine();
+            }
+
+            return checkingBalance;  //not needed i think
+        }
     }
 }

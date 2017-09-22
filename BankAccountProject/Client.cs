@@ -10,8 +10,8 @@ namespace BankAccountProject
     {
         //fields
 
-        protected string name = "Mike Mills"; //assign name here since just one client?
-        protected int accountNumber = 54321; //ditto
+        protected string name = "Mike Mills"; 
+        protected int accountNumber = 54321; //move to accounts? and create another field like years banked?
         protected string city = "Lakewood";
 
         //properties
@@ -44,7 +44,8 @@ namespace BankAccountProject
         {
             Console.WriteLine($"{name}, here is your basic bank info:");
             Console.WriteLine($"Your account number is {accountNumber}.");
-            Console.WriteLine($"Your main bank brach is {city}.");
+            Console.WriteLine($"Your main bank branch is in {city}.");
+
             Console.WriteLine();
         }
         }

@@ -23,3 +23,8 @@ IDEA: for virtual method:
 		do real method in Savings
 		(nothing in checking)
 
+OOPS! You need an "account type" in there somewhere...
+Maybe you can use that to have the deposit method be only in GeneralAccount
+and substsitute account type into the derived methods?
+instead of the strings explicitly saying Ch or Sv
+
