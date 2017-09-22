@@ -8,14 +8,12 @@ namespace BankAccountProject
 {
     class SavingsAccount : GeneralAccount
     {
-
-        //idea: savings will start at 75% of total balance, checking at 25%
-
         //fields
+        //these three are used only in Savings
 
         private double savingsBalance;
-        private new string accountType = "savings";
-
+        private double interestRate = .03d;
+        private double minimumBalance = 500;
 
         //properties
 
@@ -25,68 +23,58 @@ namespace BankAccountProject
             set { this.savingsBalance = value; }
         }
 
-        public string AccountType
+        public double InterestRate
         {
-            get { return this.accountType; }  //I THINK this will always print "savings" in accountType here
+            get { return this.interestRate; }
+        }
+
+        public double MinimumBalance
+        {
+            get { return this.minimumBalance; }
         }
 
         //constructor
 
-        public SavingsAccount() 
-        {   //do i need all this? can it be different, like constructor creates the checkingBalance instead?
-            //maybe if it accepts accountBalance then divides to creat checkingBalance?
-            //this.name = name;
-            //this.accountNumber = accountNumber;
-            //this.city = city;
-            //this.accountBalance = accountBalance;
-            savingsBalance = accountBalance * .75; //at least this part works lol
+        public SavingsAccount()  //sets variables not in or different from GeneralAccount
+        {   
+            accountType = "savings";
+            savingsBalance = accountBalance * .75; 
         }
 
         //methods
 
-        public void SavingsMenu()
+        public override void AccountInfo()  //prints info about savings account
         {
-            //welcome to checking acct
-            //show balance
-            //ask deposit or wd?
-            //ask amount
-            //do relelvant math
-            //show new balance
-        }
-
-        public override void AccountInfo()
-        {
-            //Console.WriteLine($"You account number is {accountNumber}.");
+            Console.WriteLine();
             Console.WriteLine($"The value of ALL of your deposits is: {accountBalance:C}.");
             Console.WriteLine($"The value of your {accountType} account only is {savingsBalance:C}.");
             Console.WriteLine();
         }
 
-        public double AccountDeposit()
+        public override void AccountDeposit() //overrides GeneralAccount method. does deposits
         {
+            Console.WriteLine();
             Console.WriteLine($"Starting balance in savings is: {savingsBalance:C}.");
             Console.WriteLine("How much would you like to deposit?");
             double deposit = Double.Parse(Console.ReadLine());
             savingsBalance += deposit;
+            Console.WriteLine();
             Console.WriteLine($"Thank you for your deposit of {deposit:C}.");
             Console.WriteLine($"Your new balance in savings is: {savingsBalance:C}.");
             Console.WriteLine();
-
-            return savingsBalance;
-
         }
 
-        public override double AccountWithdrawal()
+        public override void AccountWithdrawal()  //overrides GeneralAccount method. does withdrawals
         {
-            int minimumBalance = 500;
-
+            Console.WriteLine();
             Console.WriteLine($"Starting balance in savings is: {savingsBalance:C}.");
             Console.WriteLine("How much would you like to withdraw?");
             double withdrawal = Double.Parse(Console.ReadLine());
             savingsBalance -= withdrawal;
 
-            if (savingsBalance >= 500)
+            if (savingsBalance >= 500)  //if-else makes sure balance doesn't drop below minimum
             {
+                Console.WriteLine(  );
                 Console.WriteLine($"Here is your {withdrawal:C}.");
                 Console.WriteLine($"Your new balance in checking is: {savingsBalance:C}.");
                 Console.WriteLine();
@@ -94,13 +82,19 @@ namespace BankAccountProject
 
             else
             {
-                Console.WriteLine($"You must least at least {minimumBalance:C} in your account.");
+                Console.WriteLine();
+                Console.WriteLine($"You must keep at least {minimumBalance:C} in your account.");
                 savingsBalance += withdrawal;
                 Console.WriteLine($"Your savings account balance is still {savingsBalance:C}.");
                 Console.WriteLine();
             }
+        }
 
-            return savingsBalance;  //not needed i think
+        public override void InterestEarned()  //prints interest info to screen. overrides abstract method.
+        {
+            Console.WriteLine($"The interest rate in this account is {interestRate:P}.");
+            Console.WriteLine($"You can expect to earn {interestRate * savingsBalance:C} this month.");
+            Console.WriteLine();
         }
     }
 }
