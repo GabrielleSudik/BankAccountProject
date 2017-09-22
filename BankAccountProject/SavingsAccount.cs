@@ -26,12 +26,12 @@ namespace BankAccountProject
 
         //constructor
 
-        public SavingsAccount(string name, int accountNumber, string city, double accountBalance) 
+        public SavingsAccount() 
         {   //do i need all this? can it be different, like constructor creates the checkingBalance instead?
             //maybe if it accepts accountBalance then divides to creat checkingBalance?
-            this.name = name;
-            this.accountNumber = accountNumber;
-            this.city = city;
+            //this.name = name;
+            //this.accountNumber = accountNumber;
+            //this.city = city;
             this.accountBalance = accountBalance;
             savingsBalance = accountBalance * .75; //at least this part works lol
         }
@@ -50,7 +50,7 @@ namespace BankAccountProject
 
         public override void AccountInfo()
         {
-            Console.WriteLine($"You account number is {accountNumber}.");
+            //Console.WriteLine($"You account number is {accountNumber}.");
             Console.WriteLine($"The value of your savings account only is {savingsBalance}.");
         }
 

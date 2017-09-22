@@ -23,14 +23,18 @@ namespace BankAccountProject
 
         //constructor
 
-        public CheckingAccount(string name, int accountNumber, string city, double accountBalance)
+        public CheckingAccount()
         {   //do i need all this? can it be different, like constructor creates the checkingBalance instead?
             //maybe if it accepts accountBalance then divides to creat checkingBalance?
-            this.name = name;
-            this.accountNumber = accountNumber;
-            this.city = city;
+            //this.name = name;
+            //this.accountNumber = accountNumber;
+            //this.city = city;
             this.accountBalance = accountBalance;
-            checkingBalance = accountBalance * .25; //at least this part works lol
+            accountBalance = accountBalance * .25; //at least this part works lol
+
+            //can you re-do that so it's just called accountBalance, but is .25 of total?
+            //then same for checking but .75 of total?
+            //might not matter EXCEPT it will mean less creating new variable names
         }
 
         //methods
@@ -62,6 +66,27 @@ namespace BankAccountProject
             return checkingBalance;
 
         }
+        //public override double AccountWithdrawal()
+        //{
+        //    Console.WriteLine($"Starting balance in checking is: {accountBalance}.");
+        //    Console.WriteLine("How much would you like to withdraw?");
+        //    double deposit = Double.Parse(Console.ReadLine());
+        //    accountBalance -= deposit;
 
+        //    if (accountBalance >= 0)
+        //    {
+        //        Console.WriteLine($"Your new balance in checking is: {accountBalance}.");
+        //        Console.WriteLine();
+        //    }
+
+        //    else
+        //    {
+        //        Console.WriteLine("You cannot withdraw more than what's in your account.");
+        //        accountBalance += deposit;
+        //        Console.WriteLine($"Your checking account balance is still {accountBalance}.");
+        //    }
+
+        //    return accountBalance;
+        //}
     }
 }

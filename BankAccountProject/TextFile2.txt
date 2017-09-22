@@ -12,3 +12,14 @@ print total in specific account (c or s)
 ask if they want to deposit, withdraw, return to main menu
 
 repeat until main menu choice is to leave the bank
+
+
+IDEA: for virtual method:
+	savings can't drop below xx$. do only in savings.
+	virtual method in general: don't permit checking to drop below 0
+	override method in checking: implement fee if you drop below 0
+
+	IDEA: abstract method InterestEarned in general -- call it abstract, leave it blank
+		do real method in Savings
+		(nothing in checking)
+

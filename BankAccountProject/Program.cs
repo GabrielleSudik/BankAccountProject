@@ -40,31 +40,85 @@ namespace BankAccountProject
                 Console.WriteLine("\t5.\tEnd Banking");
                 int choice = int.Parse(Console.ReadLine());
 
-                if (choice == 1 || choice == 2)
+                if (choice == 1)
                 {
-                    GeneralAccount mikeGen = new GeneralAccount("Mike Mills", 0013245, "Lakewood", 1000000.00d);
 
-                    if (choice == 1)
-                    {
-                        mikeGen.PrintInfo();
-                        Console.WriteLine(  );
-                    }
+                    Client mikeClient = new Client();
 
-                    if (choice == 2)
-                    {
-                        mikeGen.AccountInfo();
-                        Console.WriteLine();
-                    }
-                    
-                    //mikeGen.AccountInfo();
+                    mikeClient.ClientInfo();
+                    Console.WriteLine();
                 }
 
-                if (choice == 3 || choice == 4)
+                if (choice == 2)
                 {
-                    Console.WriteLine("Would you like to make that transaction in:");
+                    Console.WriteLine("Which account would you like to check?");
                     Console.WriteLine("\t1.\tchecking or");
-                        Console.WriteLine("\t2.\tsavings?");
+                    Console.WriteLine("\t2.\tsavings?");
                     int choiceB = int.Parse(Console.ReadLine());
+                    
+                    if (choiceB == 1)
+                    {
+                        CheckingAccount mikeCh = new CheckingAccount();
+
+                        mikeCh.AccountInfo();
+                    }
+                    
+                    if (choiceB == 2)
+                    {
+                        SavingsAccount mikeSv = new SavingsAccount();
+
+                        mikeSv.AccountInfo();
+                    }
+                
+            
+                }
+
+                if (choice == 3)
+                {
+                    Console.WriteLine("From which account would you like to withdraw funds?");
+                    Console.WriteLine("\t1.\tchecking or");
+                    Console.WriteLine("\t2.\tsavings?");
+                    int choiceB = int.Parse(Console.ReadLine());
+
+                    if (choiceB == 1)
+                    {
+                        CheckingAccount mikeCh = new CheckingAccount();
+
+                        mikeCh.AccountWithdrawal();  
+                        //consider creating in general, with the savings one as an override
+                    }
+
+                    if (choiceB == 2)
+                    {
+                        SavingsAccount mikeSv = new SavingsAccount();
+
+                        //mikeSv.AccountWithdrawal();  NEED TO CREATE!!
+                        //consider creating in general, with the savings one as an override
+                    }
+
+                }
+
+                if (choice == 4)
+                {
+                    Console.WriteLine("To which account would you like to deposit funds?");
+                    Console.WriteLine("\t1.\tchecking or");
+                    Console.WriteLine("\t2.\tsavings?");
+                    int choiceB = int.Parse(Console.ReadLine());
+
+                    if (choiceB == 1)
+                    {
+                        CheckingAccount mikeCh = new CheckingAccount();
+
+                        mikeCh.AccountDeposit();  
+                    }
+
+                    if (choiceB == 2)
+                    {
+                        SavingsAccount mikeSv = new SavingsAccount();
+
+                        //mikeSv.AccountDeposit();  NEED TO CREATE!!
+                    }
+
                 }
 
                 if (choice == 5)

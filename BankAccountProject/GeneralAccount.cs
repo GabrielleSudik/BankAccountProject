@@ -6,33 +6,33 @@ using System.Threading.Tasks;
 
 namespace BankAccountProject
 {
-    class GeneralAccount
+    abstract class GeneralAccount
     {
         //fields
 
-        protected string name; //assign name here since just one client?
-        protected int accountNumber; //ditto
-        protected string city;
-        protected double accountBalance; //can this be the total of S and C?
+        //protected string name; //assign name here since just one client?
+        //protected int accountNumber; //ditto
+        //protected string city;
+        protected double accountBalance = 100000d; //can this be the total of S and C?
 
 
 
         //properties
 
-        public string Name
-        {
-            get { return this.name; }
-        }
+        //public string Name
+        //{
+        //    get { return this.name; }
+        //}
 
-        public int AccountNumber
-        {
-            get { return this.accountNumber; }
-        }
+        //public int AccountNumber
+        //{
+        //    get { return this.accountNumber; }
+        //}
 
-        public string City
-        {
-            get { return this.city; }
-        }
+        //public string City
+        //{
+        //    get { return this.city; }
+        //}
 
         public double AccountBalance
         {
@@ -45,28 +45,22 @@ namespace BankAccountProject
 
         public GeneralAccount() //default constructor. not sure if leave empty or set info?
         {
-            name = "Mike Mills";
+            
         }
 
-        public GeneralAccount(string name, int accountNumber, string city, double accountBalance)
-        {
-            this.name = name;
-            this.accountNumber = accountNumber;
-            this.city = city;
-            this.accountBalance = accountBalance;
-        }
+
 
 
         //methods
 
-        public void PrintInfo()
-        {
-            Console.WriteLine("Here's your bank info: //coming soon");
-            Console.WriteLine(this.name);
-            Console.WriteLine(accountNumber);
-            Console.WriteLine(city);
+        //public void PrintInfo()
+        //{
+        //    Console.WriteLine("Here's your bank info: //coming soon");
+        //    Console.WriteLine(this.name);
+        //    Console.WriteLine(accountNumber);
+        //    Console.WriteLine(city);
 
-        }
+        //}
 
         public virtual void AccountInfo()
         {
@@ -79,7 +73,29 @@ namespace BankAccountProject
         //i temporarily fixed this problem by coding it out here, and removing "override" in derived method
         //but i don't like that :(
 
+        public virtual double AccountDeposit()
+        {
+            Console.WriteLine($"Starting balance in checking is: {accountBalance}.");
+            Console.WriteLine("How much would you like to deposit?");
+            double deposit = Double.Parse(Console.ReadLine());
+            accountBalance += deposit;
+            Console.WriteLine($"Your new balance in checking is: {accountBalance}.");
+            Console.WriteLine();
 
+            return accountBalance;
 
+        }
+
+        public virtual double AccountWithdrawal()
+        {
+            Console.WriteLine($"Starting balance in checking is: {accountBalance}.");
+            Console.WriteLine("How much would you like to withdraw?");
+            double deposit = Double.Parse(Console.ReadLine());
+            accountBalance -= deposit;
+            Console.WriteLine($"Your new balance in checking is: {accountBalance}.");
+            Console.WriteLine();
+
+            return accountBalance;
+        }
     }
 }
